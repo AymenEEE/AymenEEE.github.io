@@ -34,10 +34,13 @@ In our case we will need around 40w rating, which will be scaled by to account f
 <h2>Flyback vs Double switch forward converter</h2>
 (insert an image of both topologies)
 
-In both converters, a PWM signal switches the single MOSFET in a Flyback (and the two MOSFET's in a Double Switch), and when PWM is ON the primary coil of the transformer is charged. At this stage the diode in the output stage is reverse biased because the secondary voltage is negative , meaning no current flows in the secondary coil. When PWM is OFF, the secondary coil voltage reverses to maintain current flow, forward biasing the diode. The abrupt change of current in the primary coil causes voltage spikes, in accordance
+In both converters, a PWM signal switches the single MOSFET in a Flyback (and the two MOSFET's in a Double Switch), and when PWM is ON the primary coil of the transformer is charged. At this stage the diode in the output stage is reverse biased because the secondary voltage is negative , meaning no current flows in the secondary coil. When PWM is OFF, the secondary coil voltage reverses to maintain current flow, forward biasing the diode. The abrupt change of current in the primary coil causes voltage spikes on the MOSFET's drain due to leakage inductance, which need to be dampened in some way to protect the MOSFET. 
 
+If we want to keep the flyback topology, we may consider using a snubber circuit which dissipates the voltage spikes as heat. There are a few snubber circuits we could use like the resistor-capacitor(RC) and resistor-capacitor-diode (RCD), all of which can achieve the desired results to some extent.
+
+The Double Switch Forward converter also works in a similar fashion, however it uses two diodes that enter into conduction mode when the primary coil voltage oscillates. This practically wastes less energy and allows the use of MOSFETS with smaller voltage ratings, which are likely to switch faster. The drawback of this topology is its 50% duty cycle limit, which is in place to prevent MOSFETs from conducting at the same time as the diodes.  
 
 
 <h2>Simulation</h2>
-
-The converter was initially simulated using ideal switche
+<h3>Flyback</h3>
+The converter was initially simulated using ideal switches
