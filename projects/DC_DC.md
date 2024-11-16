@@ -33,8 +33,13 @@ The choice of topology depends on the required properties of the power supply. W
 In our case we will need around 40w rating, which will be scaled up to account for inefficiencies by taking the power rating and dividing it by the minimum expected efficiency (85%), giving us 47W. This is a relatively low power converter, so we can go for a Flyback or a Double Switch Forward converter. They offer similar power ratings, however a double switch practically minimises the voltage osccillations seen in a Flyback. I will explain the difference in the section below.
 
 <h2>Single-switched flyback vs double-switched</h2>
-(insert an image of both topologies)
+<div class="text-center p-4">
+  <img width="400px" src="../img/DC-DC/Flyback_converter.png" class="img-thumbnail" >
+  <img width="400px" src="../img/DC-DC/Double_Switch.png" class="img-thumbnail" >
+</div>
 
+
+  <img width="400px" src="../img/DC-DC/Double_Switch.png" class="img-thumbnail" >
 In both converters, a PWM signal switches the single MOSFET in a Flyback (and the two MOSFET's in a Double Switch), and when PWM is ON the primary coil of the transformer is charged. At this stage the diode in the output stage is reverse biased because the secondary voltage is negative , meaning no current flows in the secondary coil. When PWM is OFF, the secondary coil voltage reverses to maintain current flow, forward biasing the diode. The abrupt change of current in the primary coil causes voltage spikes on the MOSFET's drain due to leakage inductance, which need to be dampened in some way to protect the MOSFET. 
 
 If we want to keep the flyback topology, we may consider using a snubber circuit which dissipates the voltage spikes as heat. There are a few snubber circuits we could use like the resistor-capacitor(RC) and resistor-capacitor-diode (RCD), all of which can achieve the desired results to some extent.
