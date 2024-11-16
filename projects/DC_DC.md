@@ -18,11 +18,12 @@ summary: "This is a DC_DC developed as part of a coursework by myself and had to
 <h2>Specifications</h2>
 
 <ul>
-  <item1>Vin=40V, Vout=12V</item1>
-  <item2>Iout=3.5A</item2>
-  <item3>Isolated</item3>
-  <item4>Openloop</item4>
-  <item5>Efficiency > 85%</item5>
+  <li>Vin=40V, Vout=12V</li>
+  <li>Iout=3.5A</li>
+  <li>Isolated</li>
+  <li>Openloop</li>
+  <li>Efficiency > 85%</li>
+  <li>Vout ripple < 100mv(pp)</li>
 </ul>
 
 <h2>Topology selection</h2>
