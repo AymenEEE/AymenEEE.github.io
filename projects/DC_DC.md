@@ -75,11 +75,11 @@ The reference and read voltage have been scaled down to align with a practical 5
 </div>
 
 <h3>Results</h3>
-<div class="text-center p-4">
-  <img width="400px" src="../img/DC-DC/Vout.png" class="img-thumbnail" >
-  <img width="400px" src="../img/DC-DC/Step_response.png" class="img-thumbnail" >
-  <img width="400px" src="../img/DC-DC/Vout_20W.png" class="img-thumbnail" >
-</div>
+
+<img width="400px" src="../img/DC-DC/Vout.png" class="img-thumbnail" >
+<img width="400px" src="../img/DC-DC/Step_response.png" class="img-thumbnail" >
+<img width="400px" src="../img/DC-DC/Vout_20W.png" class="img-thumbnail" >
+
 
 The simulation shows promising steady-state performance and disturbance rejection. It can be particularly seen that a step increase in load causes a dip in voltage for a short time until before it returns to the reference. This is because an increase in current flow discharges the capacitor before the control system acts to deliver more power to it, which it does so reasonably quick.
 
