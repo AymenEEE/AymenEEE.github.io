@@ -4,7 +4,7 @@ type: project
 image: img/
 title: "DC_DC converter"
 date: 2024-03-01
-published: false
+published: true
 labels:
   - Switch Mode Power Supplies
   - Analogue 
@@ -77,8 +77,9 @@ The reference and read voltage have been scaled down to align with a practical 5
 <h3>Results</h3>
 
 <img width="400px" src="../img/DC-DC/Vout.png" class="img-thumbnail" >
-<img width="400px" src="../img/DC-DC/Step_response.png" class="img-thumbnail" >
 <img width="400px" src="../img/DC-DC/Vout_20W.png" class="img-thumbnail" >
+<img width="400px" src="../img/DC-DC/Step_response.png" class="img-thumbnail" >
+
 
 
 The simulation shows promising steady-state performance and disturbance rejection. It can be particularly seen that a step increase in load causes a dip in voltage for a short time until before it returns to the reference. This is because an increase in current flow discharges the capacitor before the control system acts to deliver more power to it, which it does so reasonably quick.
