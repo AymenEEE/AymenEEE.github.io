@@ -51,7 +51,7 @@ Given the limited choice of components, it was more convenient for me to go for 
 I have used LTSPICE to carry out simulations as it has all the necessary tools. For example, I can model components to get close to practical results which puts me in a better position to build the real circuit.
 
 <div class="text-center p-3">
-  <img width="400px" src="../img/DC-DC/Circuit.png" class="img-thumbnail" >
+  <img width="400px" src="../img/DC-DC/Circuit.png" class="img-thumbnail" style="width:60%;height:20%;>
 </div>
 <h3>Modelling a transformer</h3>
 To model a transform a coupling command has to be used, which is K (primary inductor) (secondary inductor) (coupling factor). Coupling factor is a value between 0 and 1, and I will set to 0.95 to observe the effects of imperfect coupling (the thing that results in leakage inductance). 
