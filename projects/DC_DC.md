@@ -50,7 +50,7 @@ Given the limited choice of components, it was more convenient for me to go for 
 
 I have used LTSPICE to carry out simulations as it has all the necessary tools. For example, I can model components to get close to practical results which puts me in a better position to build the real circuit.
 
-<div class="text-center p-4">
+<div class="text-center p-3">
   <img width="400px" src="../img/DC-DC/Circuit.png" class="img-thumbnail" >
 </div>
 <h3>Modelling a transformer</h3>
@@ -59,6 +59,8 @@ To model a transform a coupling command has to be used, which is K (primary indu
 <h3>Components</h3>
 The choice of capacitor value ultimately depends on the allowed peak-to-peak output ripple, which is 100mv maximum. Higher capacitance values give more stable voltages, however they result in bigger inrush startup currents. 
 All other components were chosen to withstand at least 45 volts to guarantee a safe operation.
+
+Note that the MOSFET gates have been connected to a transformer gate drive. I did not plan on using them for the real circuit, however I needed a realiable way to simulate a high-side gate driver and this is difficult to do with a gate drive model (simulations take much longer!).
 
 <h3>Control</h3>
 Although the practical circuit will run in open-loop, I have still modelled a closed-loop PI controller to verify that the required output voltage can be maintained at all power levels. 
