@@ -43,6 +43,43 @@ The Double switched converter also works in a similar fashion, however it uses t
 Given the limited choice of components, it was more convenient for me to go for the double-switched converter as it requires lower voltage MOSFETs and reduces risk of overvoltage that might occur in a flyback.
 
 <h2>Simulation</h2>
-<h3>Double switched</h3>
-(insert circuit)
-(insert output voltage, )
+
+I have used LTSPICE to carry out simulations as it has all the necessary tools. For example, I can model components to get close to practical results which puts me in a better position to build the real circuit.
+
+<div class="text-center p-4">
+  <img width="400px" src="../img/DC-DC/circuit.png" class="img-thumbnail" >
+</div>
+<h3>Modelling a transformer</h3>
+To model a transform a coupling command has to be used, which is K (primary inductor) (secondary inductor) (coupling factor). Coupling factor is a value between 0 and 1, and I will set to 0.95 to observe the effects of imperfect coupling (the thing that results in leakage inductance). 
+
+<h3>Components</h3>
+The choice of capacitor value ultimately depends on the allowed peak-to-peak output ripple, which is 100mv maximum. Higher capacitance values give more stable voltages, however they result in bigger inrush startup currents. 
+All other components were chosen to withstand at least 45 volts to guarantee a safe operation.
+
+<h3>Control</h3>
+Although the practical circuit will run in open-loop, I have still modelled a closed-loop PI controller to verify that the required output voltage can be maintained at all power levels. 
+
+The PI controllers can be analytically found using the system's model, however this is not entirely accurate as the circuit is time-varying. This requires a technique called state-space averaging, which is mostly accurate at a selected operating point. For practical reasons, I have used a trial-and-error approach by first tuning the integral gain until steady-state is achieved smoothly, and then optimising the proportional gain to ensure step responses are fast enough.
+
+The PWM generator works by comparing a filtered error signal to a sawtooth waveform, and outputd a HIGH signal only when the error signal is greater than the sawtooth waveform. The frequency of the PWM signal is the same as the sawtooth waveform. 
+The reference and read voltage have been scaled down to align with a practical 5v waveform generator, however the comparator needs to output a higher voltage (typically between 12V and 18V) to minimise MOSFETs' on resistance.
+
+<div class="text-center p-4">
+  <img width="400px" src="../img/DC-DC/Control loop.png" class="img-thumbnail" >
+</div>
+
+<h3>Results</h3>
+<div class="text-center p-4">
+  <img width="400px" src="../img/DC-DC/Vout.png" class="img-thumbnail" >
+  <img width="400px" src="../img/DC-DC/Step_response.png" class="img-thumbnail" >
+  <img width="400px" src="../img/DC-DC/Vout_20W.png" class="img-thumbnail" >
+</div>
+
+The simulation shows promising steady-state performance and disturbance rejection. It can be particularly seen that a step increase in load causes a dip in voltage for a short time until before it returns to the reference. This is because an increase in current flow discharges the capacitor before the control system acts to deliver more power to it, which it does so reasonably quick.
+
+
+
+
+
+
+
