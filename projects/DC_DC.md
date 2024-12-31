@@ -1,7 +1,7 @@
 ---
 layout: project
 type: project
-image: img/DC_DC/PCB_board.jpg
+image: img/DC-DC/PCB_board.jpg
 title: "DC_DC converter"
 date: 2024-03-01
 published: true
